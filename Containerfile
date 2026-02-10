@@ -12,7 +12,6 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     dnf -y copr enable horizonproject/fernsehen && \
     dnf -y update && \
     dnf install -y \
-        -x *krunner* \
         -x *plasma-welcome* \
         google-noto-color-emoji-fonts \
         plasma-bigscreen-git \
