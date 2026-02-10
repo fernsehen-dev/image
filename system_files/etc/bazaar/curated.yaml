@@ -1,0 +1,123 @@
+# Some css names at your disposal:
+# - banner
+# - banner-text
+# - banners
+# - description
+# - subtitle
+# - title
+# - app-tile
+# - app-tile-title
+# - app-tile-verified-check
+# - app-tile-description
+# - app-tile-installed-indicator
+# - app-tile-installed-pill
+css: |
+  .main-section {
+    margin: 15px;
+    border-radius: 25px;
+  }
+  .main-section banner-text {
+    margin: 15px;
+    color: white;
+  }
+  .background-1 {
+    background: linear-gradient(45deg, #278ef5, #52136c);
+  }
+  .background-1 title {
+    border-bottom: 5px solid white;
+  }
+  .background-1 app-tile > button {
+    background-color: alpha(white, 0.1);
+  }
+  .background-1 app-tile > button:hover {
+    background-color: alpha(var(--accent-bg-color), 0.5);
+  }
+
+rows:
+  - sections:
+    - expand-horizontally: true
+
+      category:
+        title:
+            en: "TV must haves"
+            pl: "Telewizyjne niezbędniki"
+        subtitle:
+            en: "Make the best use of Fernsehen"
+            pl: "Wykorzystaj Fernsehen jak najlepiej"
+        # can be "fill", "contain", "cover", or "scale-down"
+        # see https://docs.gtk.org/gtk4/enum.ContentFit.html
+        banner-fit: contain
+
+        # can be "fill", "start", "end", or "center"
+        # see https://docs.gtk.org/gtk4/enum.Align.html
+        # halign -> "horizontal alignment"
+        banner-text-halign: start
+        # valign -> "vertical alignment"
+        banner-text-valign: center
+
+        # size in pixels
+        banner-height: 400
+
+        # "The horizontal alignment of the label text inside its size
+        # allocation."
+        # see https://docs.gtk.org/gtk4/property.Label.xalign.html
+        banner-text-label-xalign: 0.0
+
+        # appid list
+        appids:
+          - tv.kodi.Kodi
+          - org.jellyfin.JellyfinDesktop
+          - rocks.shy.VacuumTube
+          - org.kde.angelfish
+          - org.kde.kweather
+
+        # Show an "Install All" button
+        enable-bulk-install: true
+
+      # reference the classes we defined earlier
+      classes:
+        - main-section
+        - background-1
+
+- sections:
+    - expand-horizontally: true
+
+      category:
+        title:
+            en: "Games, Games, GAMES!"
+            pl: "Gry, Gry, GRY!"
+        subtitle:
+            en: "Who doesn't want some fun? Especially on the bigscreen."
+            pl: "Kto nie chce chwilę się pobawić? Tym barziej na dużym ekranie."
+        # can be "fill", "contain", "cover", or "scale-down"
+        # see https://docs.gtk.org/gtk4/enum.ContentFit.html
+        banner-fit: contain
+
+        # can be "fill", "start", "end", or "center"
+        # see https://docs.gtk.org/gtk4/enum.Align.html
+        # halign -> "horizontal alignment"
+        banner-text-halign: start
+        # valign -> "vertical alignment"
+        banner-text-valign: center
+
+        # size in pixels
+        banner-height: 400
+
+        # "The horizontal alignment of the label text inside its size
+        # allocation."
+        # see https://docs.gtk.org/gtk4/property.Label.xalign.html
+        banner-text-label-xalign: 0.0
+
+        # appid list
+        appids:
+          - org.prismlauncher.PrismLauncher
+          - com.valvesoftware.SteamLink
+          - org.libretro.RetroArch
+
+        # Show an "Install All" button
+        enable-bulk-install: true
+
+      # reference the classes we defined earlier
+      classes:
+        - main-section
+        - background-1
