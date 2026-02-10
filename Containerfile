@@ -18,9 +18,14 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
         plasma-bigscreen-git \
         plasma-setup \
         plasma-login-manager \
+        plasma-workspace-wallpapers \
         qmlkonsole \
         dolphin \
         flatpak && \
+    dnf -y copr enable horizonproject/fernsehen && \
+    dnf -y install bazaar && \
+    dnf -y copr disable ublue-os/staging && \
+    dnf -y copr disable ublue-os/staging && \
     curl --retry 3 -Lo /etc/flatpak/remotes.d/flathub.flatpakrepo https://dl.flathub.org/repo/flathub.flatpakrepo && \
     sh -c 'echo Hidden=true >> /usr/share/applications/org.kde.plasma.emojier.desktop' && \
     sh -c 'echo Hidden=true >> /usr/share/applications/org.kde.kdeconnect.app.desktop' && \
@@ -31,6 +36,6 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     mv /usr/share/applications/systemsettings_edit.desktop /usr/share/applications/systemsettings.desktop && \
     sh -c 'echo Hidden=true >> /usr/share/applications/org.kde.plasma.settings.open.desktop' && \
     sh -c 'echo Hidden=true >> /usr/share/applications/plasma-bigscreen-swap-session.desktop' && \
-    rm -rf /usr/share/wayland-sessions/plasma.desktop
+    rm -rf /usr/share/wayland-sessions/plasma.desktop && \
     
 RUN bootc container lint
