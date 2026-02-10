@@ -2,4 +2,4 @@ yaml-blocklist-paths:
   - /etc/bazaar/blocklist.yaml
 
 curated-config-paths:
-  - /etc/bazaar/curated.yaml
+  - /etc/bazaar/content.yaml
