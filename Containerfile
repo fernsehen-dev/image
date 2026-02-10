@@ -16,7 +16,7 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
         plasma-setup \
         plasma-login-manager \
         konsole \
-        flathub && \
+        flatpak && \
     curl --retry 3 -Lo /etc/flatpak/remotes.d/flathub.flatpakrepo https://dl.flathub.org/repo/flathub.flatpakrepo
     
 RUN bootc container lint
