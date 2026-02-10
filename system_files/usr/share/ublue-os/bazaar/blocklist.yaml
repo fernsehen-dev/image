@@ -1,5 +1,5 @@
-  blocklists:
-    - block:
-      - io.github.kolunmi.Bazaar
-      - org.kde.qmlkonsole
-      - org.kde.dolphin
+blocklists:
+  - block:
+    - io.github.kolunmi.Bazaar
+    - org.kde.qmlkonsole
+    - org.kde.dolphin
