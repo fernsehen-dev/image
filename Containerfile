@@ -12,11 +12,19 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     dnf -y copr enable horizonproject/fernsehen && \
     dnf -y update && \
     dnf install -y \
+        -x *krunner* \
+        -x *plasma-welcome* \
+        google-noto-color-emoji-fonts \
         plasma-bigscreen-git \
         plasma-setup \
         plasma-login-manager \
         konsole \
+        dolphin \
         flatpak && \
-    curl --retry 3 -Lo /etc/flatpak/remotes.d/flathub.flatpakrepo https://dl.flathub.org/repo/flathub.flatpakrepo
+    curl --retry 3 -Lo /etc/flatpak/remotes.d/flathub.flatpakrepo https://dl.flathub.org/repo/flathub.flatpakrepo && \
+    sh -c 'echo Hidden=true >> /usr/share/applications/org.kde.plasma.emojier.desktop' && \
+    sh -c 'echo Hidden=true >> /usr/share/applications/org.kde.kdeconnect.app.desktop' && \
+    sh -c 'echo Hidden=true >> /usr/share/applications/org.kde.kdeconnect.sms.desktop' && \
+    sh -c 'echo Hidden=true >> /usr/share/applications/plasma-bigscreen-swap-session.desktop'
     
 RUN bootc container lint
