@@ -36,6 +36,6 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     mv /usr/share/applications/systemsettings_edit.desktop /usr/share/applications/systemsettings.desktop && \
     sh -c 'echo Hidden=true >> /usr/share/applications/org.kde.plasma.settings.open.desktop' && \
     sh -c 'echo Hidden=true >> /usr/share/applications/plasma-bigscreen-swap-session.desktop' && \
-    rm -rf /usr/share/wayland-sessions/plasma.desktop && \
+    rm -rf /usr/share/wayland-sessions/plasma.desktop
     
 RUN bootc container lint
