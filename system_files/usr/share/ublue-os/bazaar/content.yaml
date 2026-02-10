@@ -79,7 +79,7 @@ rows:
         - main-section
         - background-1
 
-- sections:
+  - sections:
     - expand-horizontally: true
 
       category:
