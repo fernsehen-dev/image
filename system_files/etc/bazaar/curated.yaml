@@ -13,8 +13,8 @@
 # - app-tile-installed-pill
 css: |
   .main-section {
-    margin: 15px;
-    border-radius: 25px;
+    margin: 50px;
+    border-radius: 20px;
   }
   .main-section banner-text {
     margin: 15px;
@@ -56,7 +56,7 @@ rows:
         banner-text-valign: center
 
         # size in pixels
-        banner-height: 400
+        banner-height: 220
 
         # "The horizontal alignment of the label text inside its size
         # allocation."
@@ -101,7 +101,7 @@ rows:
         banner-text-valign: center
 
         # size in pixels
-        banner-height: 400
+        banner-height: 200
 
         # "The horizontal alignment of the label text inside its size
         # allocation."
