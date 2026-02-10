@@ -27,6 +27,8 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     sh -c 'echo Hidden=true >> /usr/share/applications/org.kde.kdeconnect.sms.desktop' && \
     sh -c 'echo Hidden=true >> /usr/share/applications/kdesystemsettings.desktop' && \
     sh -c 'echo Hidden=true >> /usr/share/applications/systemsettings.desktop' && \
-    sh -c 'echo Hidden=true >> /usr/share/applications/plasma-bigscreen-swap-session.desktop'
+    sh -c 'echo Hidden=true >> /usr/share/applications/org.kde.plasma.settings.open.desktop' && \
+    sh -c 'echo Hidden=true >> /usr/share/applications/plasma-bigscreen-swap-session.desktop' && \
+    sh -c 'echo NoDisplay=true >> /usr/share/wayland-sessions/plasma.desktop'
     
 RUN bootc container lint
