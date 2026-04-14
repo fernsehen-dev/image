@@ -56,7 +56,7 @@ jobs:
           additional-args: --use-librepo=True
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v5
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v5
         with:
           name: ${{ github.event.repository.name }}-${{ matrix.platform }}
           path: ${{ steps.build-iso.outputs.output-directory }}
