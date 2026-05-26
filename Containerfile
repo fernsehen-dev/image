@@ -1,7 +1,7 @@
 FROM scratch AS ctx
 COPY build_files /
 
-FROM quay.io/fedora/fedora-bootc:44
+FROM quay.io/fedora/fedora-bootc:latest
 
 COPY system_files /
 
@@ -10,12 +10,13 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/log \
     --mount=type=tmpfs,dst=/tmp \
     dnf -y install dnf5-plugins && \
-    dnf -y copr enable horizonproject/fernsehen && \
+#    dnf -y copr enable horizonproject/fernsehen && \
     dnf -y update && \
     dnf install -y \
         -x *plasma-welcome* \
         google-noto-color-emoji-fonts \
-        plasma-bigscreen-git \
+#        plasma-bigscreen-git \
+        plasma-bigscreen \
         plasma-setup \
         plasma-login-manager \
         plasma-workspace-wallpapers \
@@ -26,7 +27,7 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     dnf -y copr enable ublue-os/packages && \
     dnf -y install bazaar && \
     dnf -y copr disable ublue-os/packages && \
-    dnf -y copr disable horizonproject/fernsehen && \
+#    dnf -y copr disable horizonproject/fernsehen && \
     curl --retry 3 -Lo /etc/flatpak/remotes.d/flathub.flatpakrepo https://dl.flathub.org/repo/flathub.flatpakrepo && \
     sh -c 'echo Hidden=true >> /usr/share/applications/org.kde.plasma.emojier.desktop' && \
     sh -c 'echo Hidden=true >> /usr/share/applications/org.kde.kdeconnect.app.desktop' && \
