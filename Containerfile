@@ -21,6 +21,7 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
         plasma-workspace-wallpapers \
         qmlkonsole \
         dolphin \
+        waydroid \
         flatpak && \
     dnf -y copr enable ublue-os/packages && \
     dnf -y install bazaar && \
