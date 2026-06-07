@@ -2,10 +2,7 @@
 name: Build disk image
 on:
   workflow_dispatch:
-env:
-  IMAGE_NAME: "${{ github.event.repository.name }}"
-  IMAGE_REGISTRY: "ghcr.io/${{ github.repository_owner }}"
-  DEFAULT_TAG: "latest"
+
 jobs:
   build_release:
     name: Build and release disk image
@@ -31,32 +28,22 @@ jobs:
         uses: ublue-os/remove-unwanted-software@cc0becac701cf642c8f0a6613bbdaf5dc36b259e # v9
         with:
           remove-codeql: true
-          
-      - name: Install Podman from Brew
-        if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
-        run: |
-          /home/linuxbrew/.linuxbrew/bin/brew install podman
 
-      - name: Pull image 
-        env:
-          IMAGE_REGISTRY: ${{ env.IMAGE_REGISTRY }}
-          IMAGE_NAME: ${{ env.IMAGE_NAME }}
-          DEFAULT_TAG: ${{ env.DEFAULT_TAG }}
-        run: |
-          sudo podman pull ${IMAGE_REGISTRY}/${IMAGE_NAME}:${DEFAULT_TAG}
-      
+      - name: Pull image
+        run:  sudo podman pull ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:latest
+
       - name: Build ISO
         id: build-iso
         uses: osbuild/bootc-image-builder-action@main
         with:
-          config-file: './iso.toml'
+          config-file: './disk_config/iso.toml'
           image: ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:latest
           types: anaconda-iso
           rootfs: btrfs
-          additional-args: --use-librepo=True
+          additional-args: --use-librepo=False
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v5
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v5
         with:
           name: ${{ github.event.repository.name }}-${{ matrix.platform }}
           path: ${{ steps.build-iso.outputs.output-directory }}
