@@ -27,6 +27,7 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     dnf -y copr enable ublue-os/packages && \
     dnf -y install bazaar && \
     dnf -y copr disable ublue-os/packages && \
+    systemctl enable plasma-setup && \
 #    dnf -y copr disable horizonproject/fernsehen && \
     curl --retry 3 -Lo /etc/flatpak/remotes.d/flathub.flatpakrepo https://dl.flathub.org/repo/flathub.flatpakrepo && \
     sh -c 'echo Hidden=true >> /usr/share/applications/org.kde.plasma.emojier.desktop' && \
